@@ -1,12 +1,12 @@
-import { NavLink } from 'react-router';
-import { useState, useRef, useEffect } from 'react';
+import { NavLink } from "react-router";
+import { useState, useRef, useEffect } from "react";
 import {
   MenuTrigger,
   Button,
   Menu,
   MenuItem,
-  Popover
-} from 'react-aria-components';
+  Popover,
+} from "react-aria-components";
 import {
   ChevronDown,
   User,
@@ -14,8 +14,8 @@ import {
   HelpCircle,
   LogOut,
   Bell,
-  Search
-} from 'lucide-react';
+  Search,
+} from "lucide-react";
 
 export function HeaderLayout() {
   const [isAccountMenuOpen, setIsAccountMenuOpen] = useState(false);
@@ -26,14 +26,18 @@ export function HeaderLayout() {
   // Close menu when clicking outside
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
-      if (accountMenuRef.current && !accountMenuRef.current.contains(event.target as Node)) {
+      if (
+        accountMenuRef.current &&
+        !accountMenuRef.current.contains(event.target as Node)
+      ) {
         setIsAccountMenuOpen(false);
       }
     }
 
     if (isAccountMenuOpen) {
-      document.addEventListener('mousedown', handleClickOutside);
-      return () => document.removeEventListener('mousedown', handleClickOutside);
+      document.addEventListener("mousedown", handleClickOutside);
+      return () =>
+        document.removeEventListener("mousedown", handleClickOutside);
     }
   }, [isAccountMenuOpen]);
 
@@ -47,7 +51,7 @@ export function HeaderLayout() {
   // Handle escape key to close modals
   useEffect(() => {
     function handleEscapeKey(event: KeyboardEvent) {
-      if (event.key === 'Escape') {
+      if (event.key === "Escape") {
         if (isSearchModalOpen) {
           setIsSearchModalOpen(false);
         } else if (isAccountMenuOpen) {
@@ -56,15 +60,15 @@ export function HeaderLayout() {
       }
     }
 
-    document.addEventListener('keydown', handleEscapeKey);
-    return () => document.removeEventListener('keydown', handleEscapeKey);
+    document.addEventListener("keydown", handleEscapeKey);
+    return () => document.removeEventListener("keydown", handleEscapeKey);
   }, [isSearchModalOpen, isAccountMenuOpen]);
 
   const navigationItems = [
-    { to: '/dashboard', label: 'Dashboard' },
-    { to: '/invoices', label: 'Invoices' },
-    { to: '/clients', label: 'Clients' },
-    { to: '/catalogs', label: 'Catalogs' }
+    { to: "/dashboard", label: "Dashboard" },
+    { to: "/invoices", label: "Invoices" },
+    { to: "/clients", label: "Clients" },
+    { to: "/catalogs", label: "Catalogs" },
   ];
 
   return (
@@ -74,7 +78,6 @@ export function HeaderLayout() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-
           {/* Logo/Brand Section */}
           <div className="flex items-center">
             <NavLink
@@ -103,9 +106,10 @@ export function HeaderLayout() {
                   px-4 py-2 text-sm font-semibold rounded-lg transition-all duration-200
                   focus:outline-none focus:ring-4 focus:ring-blue-300 focus:ring-offset-2
                   min-h-11 min-w-11 flex items-center justify-center
-                  ${isActive
-                    ? 'bg-blue-100 text-blue-900 border-2 border-blue-200'
-                    : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900 border-2 border-transparent'
+                  ${
+                    isActive
+                      ? "bg-blue-100 text-blue-900 border-2 border-blue-200"
+                      : "text-gray-700 hover:bg-gray-100 hover:text-gray-900 border-2 border-transparent"
                   }
                 `}
               >
@@ -146,7 +150,9 @@ export function HeaderLayout() {
                   <User className="w-4 h-4 text-gray-600" />
                 </div>
                 <span className="hidden sm:block">My Account</span>
-                <ChevronDown className={`w-4 h-4 text-gray-400 transition-transform duration-200 ${isAccountMenuOpen ? 'rotate-180' : ''}`} />
+                <ChevronDown
+                  className={`w-4 h-4 text-gray-400 transition-transform duration-200 ${isAccountMenuOpen ? "rotate-180" : ""}`}
+                />
               </button>
 
               {/* Account Menu Dropdown */}
@@ -160,8 +166,12 @@ export function HeaderLayout() {
                           <User className="w-5 h-5 text-blue-600" />
                         </div>
                         <div>
-                          <p className="text-sm font-semibold text-gray-900">John Doe</p>
-                          <p className="text-xs text-gray-500">john.doe@company.com</p>
+                          <p className="text-sm font-semibold text-gray-900">
+                            John Doe
+                          </p>
+                          <p className="text-xs text-gray-500">
+                            john.doe@company.com
+                          </p>
                         </div>
                       </div>
                     </div>
@@ -169,7 +179,7 @@ export function HeaderLayout() {
                     {/* Menu Items */}
                     <button
                       onClick={() => {
-                        console.log('Profile clicked');
+                        console.log("Profile clicked");
                         setIsAccountMenuOpen(false);
                       }}
                       className="w-full flex items-center space-x-3 px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 focus:bg-gray-100 focus:outline-none rounded-md min-h-11"
@@ -180,7 +190,7 @@ export function HeaderLayout() {
 
                     <button
                       onClick={() => {
-                        console.log('Settings clicked');
+                        console.log("Settings clicked");
                         setIsAccountMenuOpen(false);
                       }}
                       className="w-full flex items-center space-x-3 px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 focus:bg-gray-100 focus:outline-none rounded-md min-h-11"
@@ -191,7 +201,7 @@ export function HeaderLayout() {
 
                     <button
                       onClick={() => {
-                        console.log('Help clicked');
+                        console.log("Help clicked");
                         setIsAccountMenuOpen(false);
                       }}
                       className="w-full flex items-center space-x-3 px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 focus:bg-gray-100 focus:outline-none rounded-md min-h-11"
@@ -204,7 +214,7 @@ export function HeaderLayout() {
 
                     <button
                       onClick={() => {
-                        console.log('Logout clicked');
+                        console.log("Logout clicked");
                         setIsAccountMenuOpen(false);
                       }}
                       className="w-full flex items-center space-x-3 px-3 py-2 text-sm text-red-700 hover:bg-red-50 focus:bg-red-50 focus:outline-none rounded-md min-h-11"
@@ -223,8 +233,18 @@ export function HeaderLayout() {
                   className="p-2 text-gray-500 hover:text-gray-700 hover:bg-gray-100 rounded-lg focus:outline-none focus:ring-4 focus:ring-blue-300 min-h-11 min-w-11 flex items-center justify-center"
                   aria-label="Open mobile menu"
                 >
-                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                  <svg
+                    className="w-6 h-6"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M4 6h16M4 12h16M4 18h16"
+                    />
                   </svg>
                 </Button>
                 <Popover
@@ -292,8 +312,8 @@ export function HeaderLayout() {
                         className="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg leading-5 bg-white placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm"
                         placeholder="Search for anything..."
                         onKeyDown={(e) => {
-                          if (e.key === 'Enter') {
-                            console.log('Search:', e.currentTarget.value);
+                          if (e.key === "Enter") {
+                            console.log("Search:", e.currentTarget.value);
                             setIsSearchModalOpen(false);
                           }
                         }}
@@ -312,7 +332,7 @@ export function HeaderLayout() {
                   onClick={() => {
                     const input = searchInputRef.current;
                     if (input) {
-                      console.log('Search:', input.value);
+                      console.log("Search:", input.value);
                       setIsSearchModalOpen(false);
                     }
                   }}
@@ -331,19 +351,7 @@ export function HeaderLayout() {
           </div>
         </div>
       )}
-
-      {/* Skip Link - Hidden by default, visible on focus */}
-      <a
-        href="#main-content"
-        className="
-          sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 
-          bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-semibold
-          focus:outline-none focus:ring-4 focus:ring-blue-300 focus:ring-offset-2
-          z-50
-        "
-      >
-        Skip to main content
-      </a>
     </header>
   );
 }
+
