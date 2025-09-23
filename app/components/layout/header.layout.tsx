@@ -73,10 +73,10 @@ export function HeaderLayout() {
 
   return (
     <header
-      className="bg-white border-b border-gray-200 shadow-sm"
+      className="bg-white border-b border-gray-200 shadow-xs"
       role="banner"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-screen-lg mx-auto px-3">
         <div className="flex justify-between items-center h-16">
           {/* Logo/Brand Section */}
           <div className="flex items-center">
@@ -85,11 +85,8 @@ export function HeaderLayout() {
               className="flex items-center space-x-2 focus:outline-none focus:ring-4 focus:ring-blue-300 rounded-lg p-2 -ml-2"
               aria-label="Go to homepage"
             >
-              <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-sm">B</span>
-              </div>
               <span className="text-xl font-bold text-gray-900 hidden sm:block">
-                Business App
+                Vomi
               </span>
             </NavLink>
           </div>
@@ -354,4 +351,3 @@ export function HeaderLayout() {
     </header>
   );
 }
-
