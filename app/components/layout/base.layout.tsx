@@ -7,7 +7,7 @@ export default function DashboardLayout() {
       <HeaderLayout />
       <main
         id="main-content"
-        className="max-w-screen-lg mx-auto px-4 sm:px-6 py-8 my-8 bg-white rounded-lg shadow-sm"
+        className="max-w-screen-lg mx-auto my-8 bg-white rounded-lg shadow-sm"
         role="main"
         tabIndex={-1}
       >

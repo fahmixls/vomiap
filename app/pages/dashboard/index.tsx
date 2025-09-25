@@ -1,12 +1,7 @@
 import MonthlyRevenueChart from "~/components/ui/monthly-revenue-chart";
-import type { Route } from "../../+types/root";
 import DataCard from "~/components/ui/summary-card";
 
-export function loader({ context }: Route.LoaderArgs) {
-  return { message: context.cloudflare.env.VALUE_FROM_CLOUDFLARE };
-}
-
-export default function Dashboard({ loaderData }: Route.ComponentProps) {
+export default function Dashboard() {
   const monthlyData = [
     { month: "Jan", revenue: 45000, fullMonth: "January" },
     { month: "Feb", revenue: 52000, fullMonth: "February" },
@@ -23,7 +18,7 @@ export default function Dashboard({ loaderData }: Route.ComponentProps) {
   ];
   return (
     <>
-      <div className="grid p-4 mb-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="grid py-4 px-6 mb-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         <DataCard
           label="Monthly Revenue"
           value="$124,592"
@@ -43,7 +38,7 @@ export default function Dashboard({ loaderData }: Route.ComponentProps) {
           description="Settled this month"
         />
         <DataCard
-          label="Invoices Outstanding"
+          label="Invoices Pending"
           value="23"
           variant="warning"
           description="Pending client payment"
